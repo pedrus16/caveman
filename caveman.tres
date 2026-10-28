@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://8ee301gv7ul7"]
+
+[ext_resource type="Shader" uid="uid://b67ptrhi5ptk8" path="res://spatial_sprite.gdshader" id="1_d4k75"]
+[ext_resource type="Texture2D" uid="uid://cp2yish240di2" path="res://assets/Walk16/walk.png" id="2_ll6i3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_d4k75")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/sprite_sheet = ExtResource("2_ll6i3")
+shader_parameter/directions_count = 16
+shader_parameter/frames_count = 24
+shader_parameter/starting_angle = -0.393
+shader_parameter/directions_on_horizontal_axis = false
+shader_parameter/clockwise = true

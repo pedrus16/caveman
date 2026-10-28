@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dw16eo8f42ypp"]
+
+[ext_resource type="Shader" uid="uid://b67ptrhi5ptk8" path="res://spatial_sprite.gdshader" id="1_7lo4x"]
+[ext_resource type="Script" uid="uid://d1pvsk2v3leyp" path="res://caveman.gd" id="1_hirew"]
+[ext_resource type="Texture2D" uid="uid://cp2yish240di2" path="res://assets/Walk16/walk.png" id="2_hirew"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
+render_priority = 0
+shader = ExtResource("1_7lo4x")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/sprite_sheet = ExtResource("2_hirew")
+shader_parameter/directions_count = 16
+shader_parameter/frames_count = 24
+shader_parameter/frame = 1
+shader_parameter/y_angle = 0.0
+shader_parameter/starting_angle = -0.393
+shader_parameter/directions_on_horizontal_axis = false
+shader_parameter/clockwise = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_g4v7s"]
+material = SubResource("ShaderMaterial_yf5fn")
+size = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_0xm2m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_h2yge"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 24]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bvp3"]
+_data = {
+&"RESET": SubResource("Animation_0xm2m"),
+&"Walk": SubResource("Animation_h2yge")
+}
+
+[node name="Caveman" type="Node3D" unique_id=28145158]
+script = ExtResource("1_hirew")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=225553817]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2136926407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+mesh = SubResource("QuadMesh_g4v7s")
+
+[node name="Timer" type="Timer" parent="." unique_id=1697895238]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=541270844]
+libraries/ = SubResource("AnimationLibrary_1bvp3")
+autoplay = &"Walk"
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]

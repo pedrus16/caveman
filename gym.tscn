@@ -1,0 +1,431 @@
+[gd_scene format=3 uid="uid://cgkxj5h56psd3"]
+
+[ext_resource type="PackedScene" uid="uid://dw16eo8f42ypp" path="res://caveman.tscn" id="1_4lhdk"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_g4v7s"]
+vertices = PackedVector3Array(-49.75, 0, -49.75, -49.75, 0, 49.75, 49.75, 0, 49.75, 49.75, 0, -49.75)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_height = 1.6
+agent_radius = 0.25
+
+[sub_resource type="Gradient" id="Gradient_d0u6y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9)
+colors = PackedColorArray(0.16503528, 0.19423178, 0.09469142, 1, 0.22917691, 0.26668176, 0.1390036, 1, 0.2876202, 0.33250716, 0.17999867, 1, 0.32577723, 0.38193116, 0.1964154, 1, 0.4970082, 0.5571165, 0.37718716, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_57qmd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yf5fn"]
+noise = SubResource("FastNoiseLite_57qmd")
+color_ramp = SubResource("Gradient_d0u6y")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+shading_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_yf5fn")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_g4v7s")
+size = Vector2(100, 100)
+
+[node name="Node3D" type="Node3D" unique_id=1974078737]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1609215746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+navigation_mesh = SubResource("NavigationMesh_g4v7s")
+
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=382730461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_g4v7s")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=357806640]
+transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 20.309313, 16.000002, 20.309313)
+projection = 1
+current = true
+size = 20.25
+near = 5.0
+
+[node name="Caveman" parent="." unique_id=28145158 instance=ExtResource("1_4lhdk")]
+
+[node name="Caveman2" parent="." unique_id=1044558551 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Caveman3" parent="." unique_id=381158051 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Caveman4" parent="." unique_id=423894887 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Caveman5" parent="." unique_id=1509735221 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Caveman6" parent="." unique_id=514758934 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Caveman7" parent="." unique_id=1580915716 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Caveman8" parent="." unique_id=1725813266 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Caveman9" parent="." unique_id=700316757 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Caveman10" parent="." unique_id=654119965 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="Caveman11" parent="." unique_id=124080000 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Caveman12" parent="." unique_id=1623562993 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="Caveman13" parent="." unique_id=2136640210 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Caveman14" parent="." unique_id=1695251720 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+
+[node name="Caveman15" parent="." unique_id=1301918930 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+
+[node name="Caveman16" parent="." unique_id=1967004111 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="Caveman17" parent="." unique_id=294536950 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Caveman18" parent="." unique_id=1749459572 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Caveman19" parent="." unique_id=39778555 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="Caveman20" parent="." unique_id=1204399836 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+
+[node name="Caveman21" parent="." unique_id=2043151462 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+
+[node name="Caveman22" parent="." unique_id=395067644 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
+
+[node name="Caveman23" parent="." unique_id=573922476 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
+
+[node name="Caveman24" parent="." unique_id=576421310 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+
+[node name="Caveman25" parent="." unique_id=1847405155 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1)
+
+[node name="Caveman26" parent="." unique_id=611367291 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+
+[node name="Caveman27" parent="." unique_id=462465156 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 1)
+
+[node name="Caveman28" parent="." unique_id=470518791 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 1)
+
+[node name="Caveman29" parent="." unique_id=1787855586 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1)
+
+[node name="Caveman30" parent="." unique_id=981145174 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 1)
+
+[node name="Caveman31" parent="." unique_id=2055242304 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 1)
+
+[node name="Caveman32" parent="." unique_id=584326403 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 1)
+
+[node name="Caveman33" parent="." unique_id=679229797 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Caveman34" parent="." unique_id=331333861 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="Caveman35" parent="." unique_id=1750954697 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Caveman36" parent="." unique_id=807884584 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Caveman37" parent="." unique_id=1030812993 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[node name="Caveman38" parent="." unique_id=1347020612 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+
+[node name="Caveman39" parent="." unique_id=268015627 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="Caveman40" parent="." unique_id=768837936 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2)
+
+[node name="Caveman41" parent="." unique_id=1044452698 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+
+[node name="Caveman42" parent="." unique_id=585526673 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+
+[node name="Caveman43" parent="." unique_id=985414368 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+
+[node name="Caveman44" parent="." unique_id=228243600 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 2)
+
+[node name="Caveman45" parent="." unique_id=1952357948 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
+
+[node name="Caveman46" parent="." unique_id=1747711541 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 2)
+
+[node name="Caveman47" parent="." unique_id=1399646113 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+
+[node name="Caveman48" parent="." unique_id=1556213601 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 2)
+
+[node name="Caveman49" parent="." unique_id=1117981992 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Caveman50" parent="." unique_id=11136543 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="Caveman51" parent="." unique_id=2006589933 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="Caveman52" parent="." unique_id=1230542170 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+
+[node name="Caveman53" parent="." unique_id=1128659163 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="Caveman54" parent="." unique_id=1404640675 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
+
+[node name="Caveman55" parent="." unique_id=641147653 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
+
+[node name="Caveman56" parent="." unique_id=202226107 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+
+[node name="Caveman57" parent="." unique_id=2054002458 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
+
+[node name="Caveman58" parent="." unique_id=407706161 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+
+[node name="Caveman59" parent="." unique_id=236683986 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 3)
+
+[node name="Caveman60" parent="." unique_id=285650104 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
+
+[node name="Caveman61" parent="." unique_id=1072126264 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3)
+
+[node name="Caveman62" parent="." unique_id=566824142 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 3)
+
+[node name="Caveman63" parent="." unique_id=1097004146 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 3)
+
+[node name="Caveman64" parent="." unique_id=1162200788 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 3)
+
+[node name="Caveman65" parent="." unique_id=2089463254 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Caveman66" parent="." unique_id=1400493513 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+
+[node name="Caveman67" parent="." unique_id=1086021632 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="Caveman68" parent="." unique_id=1202261262 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+
+[node name="Caveman69" parent="." unique_id=1808510170 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="Caveman70" parent="." unique_id=1180303612 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 4)
+
+[node name="Caveman71" parent="." unique_id=1071763017 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+
+[node name="Caveman72" parent="." unique_id=627368153 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4)
+
+[node name="Caveman73" parent="." unique_id=623100931 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="Caveman74" parent="." unique_id=1008613333 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4)
+
+[node name="Caveman75" parent="." unique_id=1826613564 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
+
+[node name="Caveman76" parent="." unique_id=391535463 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 4)
+
+[node name="Caveman77" parent="." unique_id=593080445 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="Caveman78" parent="." unique_id=403367151 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 4)
+
+[node name="Caveman79" parent="." unique_id=2009494004 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
+
+[node name="Caveman80" parent="." unique_id=1733130978 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 4)
+
+[node name="Caveman81" parent="." unique_id=2028743634 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Caveman82" parent="." unique_id=737036266 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+
+[node name="Caveman83" parent="." unique_id=261239991 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+
+[node name="Caveman84" parent="." unique_id=1652495726 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+
+[node name="Caveman85" parent="." unique_id=1697034743 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+
+[node name="Caveman86" parent="." unique_id=439404912 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="Caveman87" parent="." unique_id=1017922971 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 5)
+
+[node name="Caveman88" parent="." unique_id=1608657051 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
+
+[node name="Caveman89" parent="." unique_id=1369908978 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
+
+[node name="Caveman90" parent="." unique_id=1788866264 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 5)
+
+[node name="Caveman91" parent="." unique_id=2052693523 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
+
+[node name="Caveman92" parent="." unique_id=2062016549 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 5)
+
+[node name="Caveman93" parent="." unique_id=999544452 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 5)
+
+[node name="Caveman94" parent="." unique_id=1641407043 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 5)
+
+[node name="Caveman95" parent="." unique_id=1817007130 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 5)
+
+[node name="Caveman96" parent="." unique_id=1045735243 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
+
+[node name="Caveman97" parent="." unique_id=769792248 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Caveman98" parent="." unique_id=537658501 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+
+[node name="Caveman99" parent="." unique_id=1942003500 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Caveman100" parent="." unique_id=760690374 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
+
+[node name="Caveman101" parent="." unique_id=1702571528 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+
+[node name="Caveman102" parent="." unique_id=1773908247 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 6)
+
+[node name="Caveman103" parent="." unique_id=1416195668 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="Caveman104" parent="." unique_id=2075688703 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 6)
+
+[node name="Caveman105" parent="." unique_id=1561387114 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
+
+[node name="Caveman106" parent="." unique_id=557331025 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+
+[node name="Caveman107" parent="." unique_id=408675747 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6)
+
+[node name="Caveman108" parent="." unique_id=335173910 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 6)
+
+[node name="Caveman109" parent="." unique_id=1983295525 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="Caveman110" parent="." unique_id=183719282 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 6)
+
+[node name="Caveman111" parent="." unique_id=977938844 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+
+[node name="Caveman112" parent="." unique_id=2114919477 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 6)
+
+[node name="Caveman113" parent="." unique_id=868224891 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Caveman114" parent="." unique_id=1419938508 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
+
+[node name="Caveman115" parent="." unique_id=1018203398 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
+
+[node name="Caveman116" parent="." unique_id=1067831212 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
+
+[node name="Caveman117" parent="." unique_id=1216320884 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 7)
+
+[node name="Caveman118" parent="." unique_id=105742780 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
+
+[node name="Caveman119" parent="." unique_id=554842636 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 7)
+
+[node name="Caveman120" parent="." unique_id=1795450009 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+
+[node name="Caveman121" parent="." unique_id=1697797484 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 7)
+
+[node name="Caveman122" parent="." unique_id=1957994910 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
+
+[node name="Caveman123" parent="." unique_id=1402449191 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 7)
+
+[node name="Caveman124" parent="." unique_id=498642569 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 7)
+
+[node name="Caveman125" parent="." unique_id=1355323959 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 7)
+
+[node name="Caveman126" parent="." unique_id=742126655 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 7)
+
+[node name="Caveman127" parent="." unique_id=1461007575 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 7)
+
+[node name="Caveman128" parent="." unique_id=1744782949 instance=ExtResource("1_4lhdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 7)
