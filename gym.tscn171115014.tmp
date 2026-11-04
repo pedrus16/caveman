@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cgkxj5h56psd3"]
+
+[ext_resource type="PackedScene" uid="uid://dw16eo8f42ypp" path="res://caveman.tscn" id="1_4lhdk"]
+[ext_resource type="Script" uid="uid://2wdwlcp8j5uf" path="res://pointer_controller.gd" id="1_jaclh"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_g4v7s"]
+vertices = PackedVector3Array(-1.25, 0, -9, 0, 0, -9.25, 0, 0, -49.75, -49.75, 0, -49.75, -49.75, 0, -7.75, -1.25, 0, -7.75, 1.25, 0, -9.25, 1.5, 0, -8, 49.75, 0, -8, 49.75, 0, -49.75, -0.75, 3, -8.75, -0.75, 3, -7.25, 0.75, 3, -7.25, 0.75, 3, -8.75, -0.5, 0, -8.5, -0.5, 0, -7.25, 0.75, 0, -7.25, 0.75, 0, -8.5, 1, 0, -6.5, 0, 0, 49.75, 49.75, 0, 49.75, 0, 0, -6.5, -1.25, 0, -6.75, -49.75, 0, 49.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(6, 1, 2), PackedInt32Array(6, 2, 7), PackedInt32Array(7, 2, 8), PackedInt32Array(8, 2, 9), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(7, 8, 18), PackedInt32Array(18, 8, 20), PackedInt32Array(18, 20, 19), PackedInt32Array(19, 21, 18), PackedInt32Array(4, 5, 22), PackedInt32Array(22, 21, 4), PackedInt32Array(4, 21, 19), PackedInt32Array(4, 19, 23)]
+agent_height = 1.6
+agent_radius = 0.25
+
+[sub_resource type="Gradient" id="Gradient_d0u6y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9)
+colors = PackedColorArray(0.16503528, 0.19423178, 0.09469142, 1, 0.22917691, 0.26668176, 0.1390036, 1, 0.2876202, 0.33250716, 0.17999867, 1, 0.32577723, 0.38193116, 0.1964154, 1, 0.4970082, 0.5571165, 0.37718716, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_57qmd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yf5fn"]
+noise = SubResource("FastNoiseLite_57qmd")
+color_ramp = SubResource("Gradient_d0u6y")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+shading_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_yf5fn")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_g4v7s")
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkbvq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_nkbvq")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhgo0"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_nkbvq"]
+material = SubResource("StandardMaterial3D_xhgo0")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(2, 3, 2)
+
+[node name="Node3D" type="Node3D" unique_id=1974078737]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1609215746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+navigation_mesh = SubResource("NavigationMesh_g4v7s")
+
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=382730461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_g4v7s")
+
+[node name="House" type="StaticBody3D" parent="NavigationRegion3D" unique_id=383029984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/House" unique_id=2113044006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/House" unique_id=746648995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("PrismMesh_nkbvq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/House" unique_id=1781014567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=357806640]
+transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 20.309313, 16.000002, 20.309313)
+projection = 1
+current = true
+size = 20.25
+near = 5.0
+script = ExtResource("1_jaclh")
+
+[node name="Caveman" parent="." unique_id=28145158 instance=ExtResource("1_4lhdk")]
+
+[node name="Caveman2" parent="." unique_id=1730777570 instance=ExtResource("1_4lhdk")]
+
+[node name="Caveman3" parent="." unique_id=720054116 instance=ExtResource("1_4lhdk")]
+
+[node name="Caveman4" parent="." unique_id=421633504 instance=ExtResource("1_4lhdk")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1693862728]
+transform = Transform3D(1, 0, 0, 0, 0.51694775, 0.8560169, 0, -0.8560169, 0.51694775, 0, 9.497986, 0)
+shadow_enabled = true

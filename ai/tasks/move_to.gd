@@ -29,6 +29,7 @@ func _generate_name() -> String:
 # Called each time this task is entered.
 func _enter() -> void:
 	var target: Vector3 = blackboard.get_var(target_position_var, null)
+	agent.navigation_agent.set_target_position(target)
 
 
 # Called each time this task is ticked (aka executed).

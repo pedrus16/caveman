@@ -1,0 +1,69 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://b0iouefj04sgx"]
+
+[ext_resource type="Script" uid="uid://dc1th87l22t0b" path="res://ai/tasks/select_random_position.gd" id="1_wuk14"]
+[ext_resource type="Script" uid="uid://v5q0vf2edlpo" path="res://ai/tasks/move_to.gd" id="2_574g5"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_7lo4x"]
+var/pos/name = &"pos"
+var/pos/type = 9
+var/pos/value = Vector3(0, 0, 0)
+var/pos/hint = 0
+var/pos/hint_string = ""
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 4.8
+var/speed/hint = 0
+var/speed/hint_string = ""
+var/mouse_pos/name = &"mouse_pos"
+var/mouse_pos/type = 9
+var/mouse_pos/value = Vector3(0, 0, 0)
+var/mouse_pos/hint = 0
+var/mouse_pos/hint_string = ""
+
+[sub_resource type="BBVariant" id="BBVariant_wuk14"]
+type = 9
+saved_value = Vector3(0, 0, 0)
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_574g5"]
+variable = &"mouse_pos"
+value = SubResource("BBVariant_wuk14")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_hirew"]
+
+[sub_resource type="BTAction" id="BTAction_ae1ib"]
+script = ExtResource("1_wuk14")
+range_max = 5.0
+
+[sub_resource type="BTAction" id="BTAction_wuk14"]
+script = ExtResource("2_574g5")
+
+[sub_resource type="BTSequence" id="BTSequence_ybwp2"]
+children = [SubResource("BTCheckVar_574g5"), SubResource("BTRandomWait_hirew"), SubResource("BTAction_ae1ib"), SubResource("BTAction_wuk14")]
+
+[sub_resource type="BBVariant" id="BBVariant_574g5"]
+type = 9
+saved_value = Vector3(0, 0, 0)
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ybwp2"]
+variable = &"mouse_pos"
+check_type = 5
+value = SubResource("BBVariant_574g5")
+
+[sub_resource type="BTAction" id="BTAction_tduhp"]
+script = ExtResource("2_574g5")
+target_position_var = &"mouse_pos"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_wuk14"]
+_enabled = false
+
+[sub_resource type="BTSequence" id="BTSequence_rqc7h"]
+children = [SubResource("BTCheckVar_ybwp2"), SubResource("BTAction_tduhp"), SubResource("BTRandomWait_wuk14")]
+
+[sub_resource type="BTSelector" id="BTSelector_xdx35"]
+children = [SubResource("BTSequence_ybwp2"), SubResource("BTSequence_rqc7h")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_7lo4x")
+root_task = SubResource("BTSelector_xdx35")

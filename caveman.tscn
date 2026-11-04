@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dw16eo8f42ypp"]
 
-[ext_resource type="Script" uid="uid://d1pvsk2v3leyp" path="res://caveman.gd" id="1_hirew"]
+[ext_resource type="Script" uid="uid://d1pvsk2v3leyp" path="res://agent.gd" id="1_hirew"]
 [ext_resource type="Material" uid="uid://8ee301gv7ul7" path="res://caveman.tres" id="2_ae1ib"]
-[ext_resource type="Script" uid="uid://dc1th87l22t0b" path="res://ai/tasks/select_random_position.gd" id="3_hirew"]
-[ext_resource type="Script" uid="uid://v5q0vf2edlpo" path="res://ai/tasks/move_to.gd" id="4_ae1ib"]
+[ext_resource type="BehaviorTree" uid="uid://b0iouefj04sgx" path="res://ai/trees/caveman.tres" id="3_ae1ib"]
+[ext_resource type="Script" uid="uid://btddas5mipice" path="res://reproduce.gd" id="5_tduhp"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_g4v7s"]
 material = ExtResource("2_ae1ib")
@@ -46,35 +46,8 @@ _data = {
 &"Walk": SubResource("Animation_h2yge")
 }
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_7lo4x"]
-var/pos/name = &"pos"
-var/pos/type = 3
-var/pos/value = 0.0
-var/pos/hint = 0
-var/pos/hint_string = ""
-var/speed/name = &"speed"
-var/speed/type = 3
-var/speed/value = 4.8
-var/speed/hint = 0
-var/speed/hint_string = ""
-
-[sub_resource type="BTRandomWait" id="BTRandomWait_hirew"]
-
-[sub_resource type="BTAction" id="BTAction_ae1ib"]
-script = ExtResource("3_hirew")
-range_max = 10.0
-
-[sub_resource type="BTAction" id="BTAction_tduhp"]
-script = ExtResource("4_ae1ib")
-
-[sub_resource type="BTSequence" id="BTSequence_hirew"]
-children = [SubResource("BTRandomWait_hirew"), SubResource("BTAction_ae1ib"), SubResource("BTAction_tduhp")]
-
-[sub_resource type="BehaviorTree" id="BehaviorTree_jn735"]
-blackboard_plan = SubResource("BlackboardPlan_7lo4x")
-root_task = SubResource("BTSequence_hirew")
-
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_7ycnn"]
+binding/mouse_pos = NodePath("..:mouse_position")
 
 [node name="Caveman" type="Node3D" unique_id=28145158]
 script = ExtResource("1_hirew")
@@ -91,16 +64,17 @@ instance_shader_parameters/frame = 1
 instance_shader_parameters/y_angle = 0.0
 mesh = SubResource("QuadMesh_g4v7s")
 
-[node name="IdleTimer" type="Timer" parent="." unique_id=471110745]
-one_shot = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=541270844]
 libraries/ = SubResource("AnimationLibrary_1bvp3")
 autoplay = &"Walk"
 
 [node name="BTPlayer" type="BTPlayer" parent="." unique_id=126439183]
-behavior_tree = SubResource("BehaviorTree_jn735")
+behavior_tree = ExtResource("3_ae1ib")
 blackboard_plan = SubResource("BlackboardPlan_7ycnn")
+
+[node name="Reproduce" type="Node" parent="." unique_id=373984429]
+script = ExtResource("5_tduhp")
+metadata/_custom_type_script = "uid://btddas5mipice"
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

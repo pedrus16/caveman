@@ -1,13 +1,13 @@
 extends Node3D
 
+@export var mouse_position: Vector3
+
 var movement_speed: float = 4.8
 var movement_target_position: Vector3 = Vector3(0.0, 0.0, 0.0)
 
 var animation_reference_speed: float = 2.4
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var idle_timer: Timer = $IdleTimer
-
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -32,12 +32,12 @@ func actor_setup():
 	## Now that the navigation map is no longer empty, set the movement target.
 	#set_random_movement_target()
 	
-func set_movement_target(movement_target: Vector3):
-	navigation_agent.set_target_position(movement_target)
+#func set_movement_target(movement_target: Vector3):
+	#navigation_agent.set_target_position(movement_target)
 	
-func set_random_movement_target():
-	movement_target_position = NavigationServer3D.map_get_random_point(default_navigation_map_rid, navigation_agent.navigation_layers, true)
-	set_movement_target(movement_target_position)
+#func set_random_movement_target():
+	#movement_target_position = NavigationServer3D.map_get_random_point(default_navigation_map_rid, navigation_agent.navigation_layers, true)
+	#set_movement_target(movement_target_position)
 
 func _physics_process(delta):
 	physics_delta = delta
